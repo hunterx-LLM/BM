@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBDP Business Management SL | Study Hub</title>
+  <meta name="description" content="Comprehensive study resource for IB Diploma Programme Business Management SL">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- ============================
+       HEADER
+       ============================ -->
+  <header class="app-header site-header" id="appHeader">
+    <div class="header-left">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="logo">
+        <div class="logo-icon" style="font-family:var(--font-serif);font-size:0.7rem;letter-spacing:-0.02em;font-weight:400;">CAS</div>
+        <div class="logo-text">
+          <span class="logo-title">Frank's CAS</span>
+          <span class="logo-subtitle">IBDP BM SL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="search-wrapper" id="searchWrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input
+          type="search"
+          id="globalSearch"
+          class="search-input"
+          placeholder="Search topics, terms, concepts..."
+          autocomplete="off"
+        >
+        <kbd class="search-shortcut">Ctrl+K</kbd>
+        <div class="search-results-dropdown" id="searchResults" hidden>
+          <ul class="search-results-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="header-progress" id="headerProgress" title="Overall study progress">
+        <svg class="progress-ring" width="36" height="36">
+          <circle class="progress-ring-bg" cx="18" cy="18" r="15" />
+          <circle class="progress-ring-fill" cx="18" cy="18" r="15" data-progress="0" />
+        </svg>
+        <span class="progress-label" id="progressLabel">0%</span>
+      </div>
+
+      <button class="header-btn" id="darkModeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <button class="header-btn" id="notificationsBtn" title="Notifications">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge" id="notifBadge" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================
+       LAYOUT WRAPPER
+       ============================ -->
+  <div class="app-layout">
+
+    <!-- Hover trigger zone for sidebar -->
+    <div class="sidebar-trigger" id="sidebarTrigger"></div>
+    <!-- Overlay behind sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ============================
+         SIDEBAR NAVIGATION
+         ============================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-scroll">
+
+        <!-- User / Quick Stats -->
+        <div class="sidebar-user">
+          <div class="user-avatar" id="userAvatar">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <div class="user-info">
+            <span class="user-greeting" id="userGreeting">Welcome, Student</span>
+          </div>
+        </div>
+
+        <div class="sidebar-divider"></div>
+
+        <!-- Primary Navigation -->
+        <ul class="nav-list" id="mainNav">
+
+          <!-- Dashboard -->
+          <li class="nav-item active" data-section="dashboard">
+            <a href="#dashboard" class="nav-link">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <!-- Business Management Toolkit -->
+          <li class="nav-item" data-section="toolkit">
+            <a href="#toolkit" class="nav-link">
+              <i class="fas fa-toolbox"></i>
+              <span>Business Management Toolkit</span>
+            </a>
+          </li>
+
+          <div class="sidebar-divider"></div>
+          <div class="nav-section-label">Syllabus Units</div>
+
+          <!-- Unit 1 -->
+          <li class="nav-item has-children" data-section="unit1">
+            <a href="#unit1" class="nav-link">
+              <i class="fas fa-building"></i>
+              <span>Unit 1: Introduction to Business Management</span>
+              <i class="fas fa-chevron-down nav-arrow"></i>
+            </a>
+            <ul class="nav-sublist">
+              <li data-subtopic="1.1"><a href="#unit1-1.1">1.1 What is a Business?</a></li>
+              <li data-subtopic="1.2"><a href="#unit1-1.2">1.2 Types of Business Entities</a></li>
+              <li data-subtopic="1.3"><a href="#unit1-1.3">1.3 Business Objectives</a></li>
+              <li data-subtopic="1.4"><a href="#unit1-1.4">1.4 Stakeholders</a></li>
+              <li data-subtopic="1.5"><a href="#unit1-1.5">1.5 Growth and Evolution</a></li>
+              <li data-subtopic="1.6"><a href="#unit1-1.6">1.6 Multinational Companies</a></li>
+            </ul>
+          </li>
+
+          <!-- Unit 2 -->
+          <li class="nav-item has-children" data-section="unit2">
+            <a href="#unit2" class="nav-link">
+              <i class="fas fa-users"></i>
+              <span>Unit 2: Human Resource Management</span>
+              <span class="nav-badge sl-badge">SL</span>
+              <i class="fas fa-chevron-down nav-arrow"></i>
+            </a>
+            <ul class="nav-sublist">
+              <li data-subtopic="2.1"><a href="#unit2-2.1">2.1 Introduction to HRM</a></li>
+              <li data-subtopic="2.2"><a href="#unit2-2.2">2.2 Organizational Structure</a></li>
+              <li data-subtopic="2.3"><a href="#unit2-2.3">2.3 Leadership and Management</a></li>
+              <li data-subtopic="2.4"><a href="#unit2-2.4">2.4 Motivation and Demotivation</a></li>
+              <li data-subtopic="2.6"><a href="#unit2-2.6">2.6 Industrial/Employee Relations</a></li>
+            </ul>
+          </li>
+
+          <!-- Unit 3 -->
+          <li class="nav-item has-children" data-section="unit3">
+            <a href="#unit3" class="nav-link">
+              <i class="fas fa-chart-line"></i>
+              <span>Unit 3: Finance and Accounts</span>
+              <span class="nav-badge sl-badge">SL</span>
+              <i class="fas fa-chevron-down nav-arrow"></i>
+            </a>
+            <ul class="nav-sublist">
+              <li data-subtopic="3.1"><a href="#unit3-3.1">3.1 Introduction to Finance</a></li>
+              <li data-subtopic="3.2"><a href="#unit3-3.2">3.2 Sources of Finance</a></li>
+              <li data-subtopic="3.3"><a href="#unit3-3.3">3.3 Costs and Revenues</a></li>
+              <li data-subtopic="3.4"><a href="#unit3-3.4">3.4 Final Accounts</a></li>
+              <li data-subtopic="3.5"><a href="#unit3-3.5">3.5 Profitability and Liquidity Ratio Analysis</a></li>
+              <li data-subtopic="3.7"><a href="#unit3-3.7">3.7 Cash Flow</a></li>
+              <li data-subtopic="3.8"><a href="#unit3-3.8">3.8 Investment Appraisal</a></li>
+            </ul>
+          </li>
+
+          <!-- Unit 4 -->
+          <li class="nav-item has-children" data-section="unit4">
+            <a href="#unit4" class="nav-link">
+              <i class="fas fa-bullhorn"></i>
+              <span>Unit 4: Marketing</span>
+              <span class="nav-badge sl-badge">SL</span>
+              <i class="fas fa-chevron-down nav-arrow"></i>
+            </a>
+            <ul class="nav-sublist">
+              <li data-subtopic="4.1"><a href="#unit4-4.1">4.1 Introduction to Marketing</a></li>
+              <li data-subtopic="4.2"><a href="#unit4-4.2">4.2 Marketing Planning</a></li>
+              <li data-subtopic="4.4"><a href="#unit4-4.4">4.4 Market Research</a></li>
+              <li data-subtopic="4.5"><a href="#unit4-4.5">4.5 The 4 Ps (Product, Price, Promotion, Place)</a></li>
+            </ul>
+          </li>
+
+          <!-- Unit 5 -->
+          <li class="nav-item has-children" data-section="unit5">
+            <a href="#unit5" class="nav-link">
+              <i class="fas fa-cogs"></i>
+              <span>Unit 5: Operations Management</span>
+              <span class="nav-badge sl-badge">SL</span>
+              <i class="fas fa-chevron-down nav-arrow"></i>
+            </a>
+            <ul class="nav-sublist">
+              <li data-subtopic="5.1"><a href="#unit5-5.1">5.1 Introduction to Operations Management</a></li>
+              <li data-subtopic="5.2"><a href="#unit5-5.2">5.2 Operations Methods</a></li>
+              <li data-subtopic="5.4"><a href="#unit5-5.4">5.4 Location</a></li>
+              <li data-subtopic="5.5"><a href="#unit5-5.5">5.5 Production Planning</a></li>
+            </ul>
+          </li>
+
+          <div class="sidebar-divider"></div>
+          <div class="nav-section-label">Study Tools</div>
+
+          <!-- Flashcards -->
+          <li class="nav-item" data-section="flashcards">
+            <a href="#flashcards" class="nav-link">
+              <i class="fas fa-clone"></i>
+              <span>Flashcards</span>
+            </a>
+          </li>
+
+          <!-- Exam Practice -->
+          <li class="nav-item" data-section="exam-practice">
+            <a href="#exam-practice" class="nav-link">
+              <i class="fas fa-pen-fancy"></i>
+              <span>Exam Practice</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-sm" id="resetProgressBtn">
+          <i class="fas fa-redo"></i> Reset Progress
+        </button>
+      </div>
+    </nav>
+
+    <!-- ============================
+         MAIN CONTENT AREA
+         ============================ -->
+    <main class="main-content" id="mainContent">
+
+      <!-- Breadcrumb -->
+      <div class="breadcrumb" id="breadcrumb">
+        <a href="#dashboard" class="breadcrumb-link" data-section="dashboard">
+          <i class="fas fa-home"></i>
+        </a>
+      </div>
+
+      <!-- ========================
+           SECTION: Dashboard
+           ======================== -->
+      <section class="content-section active" id="section-dashboard" data-section="dashboard">
+        <div class="home-hero">
+          <h1 class="home-title">Frank's CAS</h1>
+          <p class="home-subtitle">IBDP Business Management SL</p>
+        </div>
+
+        <div class="home-nav-grid">
+          <a href="#unit1" class="glass-btn" data-section="unit1">
+            <i class="fas fa-building"></i>
+            <span>Unit 1: Introduction to Business Management</span>
+          </a>
+          <a href="#unit2" class="glass-btn" data-section="unit2">
+            <i class="fas fa-users"></i>
+            <span>Unit 2: Human Resource Management</span>
+          </a>
+          <a href="#unit3" class="glass-btn" data-section="unit3">
+            <i class="fas fa-chart-line"></i>
+            <span>Unit 3: Finance and Accounts</span>
+          </a>
+          <a href="#unit4" class="glass-btn" data-section="unit4">
+            <i class="fas fa-bullhorn"></i>
+            <span>Unit 4: Marketing</span>
+          </a>
+          <a href="#unit5" class="glass-btn" data-section="unit5">
+            <i class="fas fa-cogs"></i>
+            <span>Unit 5: Operations Management</span>
+          </a>
+          <a href="#toolkit" class="glass-btn" data-section="toolkit">
+            <i class="fas fa-toolbox"></i>
+            <span>Business Management Toolkit</span>
+          </a>
+          <a href="#flashcards" class="glass-btn" data-section="flashcards">
+            <i class="fas fa-clone"></i>
+            <span>Flashcards</span>
+          </a>
+          <a href="#exam-practice" class="glass-btn" data-section="exam-practice">
+            <i class="fas fa-pen-fancy"></i>
+            <span>Exam Practice</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Business Management Toolkit
+           ======================== -->
+      <section class="content-section" id="section-toolkit" data-section="toolkit" hidden>
+        <div class="section-header">
+          <h1>Business Management Toolkit</h1>
+          <p class="section-subtitle">Essential analytical tools and frameworks for the IBDP BM course</p>
+        </div>
+        <div class="toolkit-grid" id="toolkitGrid">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Unit 1
+           ======================== -->
+      <section class="content-section" id="section-unit1" data-section="unit1" hidden>
+        <div class="section-header">
+          <h1>Unit 1: Introduction to Business Management</h1>
+          <p class="section-subtitle">Understand the nature and purpose of business activity</p>
+          <div class="unit-progress-inline">
+            <div class="progress-bar"><div class="progress-bar-fill" id="unit1InlineBar" style="width:0%"></div></div>
+            <span id="unit1InlinePct">0% complete</span>
+          </div>
+        </div>
+
+        <!-- Sub-topic Tabs -->
+        <div class="topic-tabs" id="unit1Tabs" role="tablist">
+          <button class="topic-tab active" role="tab" data-tab="1.1" aria-selected="true">1.1 What is a Business?</button>
+          <button class="topic-tab" role="tab" data-tab="1.2">1.2 Types of Business Entities</button>
+          <button class="topic-tab" role="tab" data-tab="1.3">1.3 Business Objectives</button>
+          <button class="topic-tab" role="tab" data-tab="1.4">1.4 Stakeholders</button>
+          <button class="topic-tab" role="tab" data-tab="1.5">1.5 Growth and Evolution</button>
+          <button class="topic-tab" role="tab" data-tab="1.6">1.6 Multinational Companies</button>
+        </div>
+
+        <!-- Sub-topic Panels -->
+        <div class="topic-panels" id="unit1Panels">
+          <div class="topic-panel active" id="panel-1.1" data-panel="1.1" role="tabpanel">
+            <div class="topic-content" id="content-1.1"><!-- JS populated --></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="1.1"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="1.1" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-1.2" data-panel="1.2" role="tabpanel" hidden>
+            <div class="topic-content" id="content-1.2"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="1.2"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="1.2" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-1.3" data-panel="1.3" role="tabpanel" hidden>
+            <div class="topic-content" id="content-1.3"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="1.3"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="1.3" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-1.4" data-panel="1.4" role="tabpanel" hidden>
+            <div class="topic-content" id="content-1.4"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="1.4"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="1.4" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-1.5" data-panel="1.5" role="tabpanel" hidden>
+            <div class="topic-content" id="content-1.5"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="1.5"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="1.5" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-1.6" data-panel="1.6" role="tabpanel" hidden>
+            <div class="topic-content" id="content-1.6"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="1.6"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="1.6" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Unit 2
+           ======================== -->
+      <section class="content-section" id="section-unit2" data-section="unit2" hidden>
+        <div class="section-header">
+          <h1>Unit 2: Human Resource Management</h1>
+          <p class="section-subtitle">Managing people within organisations (SL topics)</p>
+          <div class="unit-progress-inline">
+            <div class="progress-bar"><div class="progress-bar-fill" id="unit2InlineBar" style="width:0%"></div></div>
+            <span id="unit2InlinePct">0% complete</span>
+          </div>
+        </div>
+
+        <div class="topic-tabs" id="unit2Tabs" role="tablist">
+          <button class="topic-tab active" role="tab" data-tab="2.1" aria-selected="true">2.1 Introduction to HRM</button>
+          <button class="topic-tab" role="tab" data-tab="2.2">2.2 Organizational Structure</button>
+          <button class="topic-tab" role="tab" data-tab="2.3">2.3 Leadership and Management</button>
+          <button class="topic-tab" role="tab" data-tab="2.4">2.4 Motivation and Demotivation</button>
+          <button class="topic-tab" role="tab" data-tab="2.6">2.6 Industrial/Employee Relations</button>
+        </div>
+
+        <div class="topic-panels" id="unit2Panels">
+          <div class="topic-panel active" id="panel-2.1" data-panel="2.1" role="tabpanel">
+            <div class="topic-content" id="content-2.1"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="2.1"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="2.1" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-2.2" data-panel="2.2" role="tabpanel" hidden>
+            <div class="topic-content" id="content-2.2"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="2.2"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="2.2" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-2.3" data-panel="2.3" role="tabpanel" hidden>
+            <div class="topic-content" id="content-2.3"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="2.3"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="2.3" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-2.4" data-panel="2.4" role="tabpanel" hidden>
+            <div class="topic-content" id="content-2.4"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="2.4"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="2.4" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-2.6" data-panel="2.6" role="tabpanel" hidden>
+            <div class="topic-content" id="content-2.6"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="2.6"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="2.6" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Unit 3
+           ======================== -->
+      <section class="content-section" id="section-unit3" data-section="unit3" hidden>
+        <div class="section-header">
+          <h1>Unit 3: Finance and Accounts</h1>
+          <p class="section-subtitle">Understanding financial information and decision-making (SL topics)</p>
+          <div class="unit-progress-inline">
+            <div class="progress-bar"><div class="progress-bar-fill" id="unit3InlineBar" style="width:0%"></div></div>
+            <span id="unit3InlinePct">0% complete</span>
+          </div>
+        </div>
+
+        <div class="topic-tabs" id="unit3Tabs" role="tablist">
+          <button class="topic-tab active" role="tab" data-tab="3.1" aria-selected="true">3.1 Introduction to Finance</button>
+          <button class="topic-tab" role="tab" data-tab="3.2">3.2 Sources of Finance</button>
+          <button class="topic-tab" role="tab" data-tab="3.3">3.3 Costs and Revenues</button>
+          <button class="topic-tab" role="tab" data-tab="3.4">3.4 Final Accounts</button>
+          <button class="topic-tab" role="tab" data-tab="3.5">3.5 Profitability and Liquidity Ratio Analysis</button>
+          <button class="topic-tab" role="tab" data-tab="3.7">3.7 Cash Flow</button>
+          <button class="topic-tab" role="tab" data-tab="3.8">3.8 Investment Appraisal</button>
+        </div>
+
+        <div class="topic-panels" id="unit3Panels">
+          <div class="topic-panel active" id="panel-3.1" data-panel="3.1" role="tabpanel">
+            <div class="topic-content" id="content-3.1"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="3.1"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="3.1" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-3.2" data-panel="3.2" role="tabpanel" hidden>
+            <div class="topic-content" id="content-3.2"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="3.2"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="3.2" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-3.3" data-panel="3.3" role="tabpanel" hidden>
+            <div class="topic-content" id="content-3.3"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="3.3"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="3.3" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-3.4" data-panel="3.4" role="tabpanel" hidden>
+            <div class="topic-content" id="content-3.4"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="3.4"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="3.4" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-3.5" data-panel="3.5" role="tabpanel" hidden>
+            <div class="topic-content" id="content-3.5"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="3.5"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="3.5" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-3.7" data-panel="3.7" role="tabpanel" hidden>
+            <div class="topic-content" id="content-3.7"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="3.7"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="3.7" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-3.8" data-panel="3.8" role="tabpanel" hidden>
+            <div class="topic-content" id="content-3.8"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="3.8"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="3.8" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Unit 4
+           ======================== -->
+      <section class="content-section" id="section-unit4" data-section="unit4" hidden>
+        <div class="section-header">
+          <h1>Unit 4: Marketing</h1>
+          <p class="section-subtitle">Understanding marketing processes and strategies (SL topics)</p>
+          <div class="unit-progress-inline">
+            <div class="progress-bar"><div class="progress-bar-fill" id="unit4InlineBar" style="width:0%"></div></div>
+            <span id="unit4InlinePct">0% complete</span>
+          </div>
+        </div>
+
+        <div class="topic-tabs" id="unit4Tabs" role="tablist">
+          <button class="topic-tab active" role="tab" data-tab="4.1" aria-selected="true">4.1 Introduction to Marketing</button>
+          <button class="topic-tab" role="tab" data-tab="4.2">4.2 Marketing Planning</button>
+          <button class="topic-tab" role="tab" data-tab="4.4">4.4 Market Research</button>
+          <button class="topic-tab" role="tab" data-tab="4.5">4.5 The 4 Ps</button>
+        </div>
+
+        <div class="topic-panels" id="unit4Panels">
+          <div class="topic-panel active" id="panel-4.1" data-panel="4.1" role="tabpanel">
+            <div class="topic-content" id="content-4.1"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="4.1"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="4.1" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-4.2" data-panel="4.2" role="tabpanel" hidden>
+            <div class="topic-content" id="content-4.2"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="4.2"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="4.2" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-4.4" data-panel="4.4" role="tabpanel" hidden>
+            <div class="topic-content" id="content-4.4"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="4.4"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="4.4" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-4.5" data-panel="4.5" role="tabpanel" hidden>
+            <div class="topic-content" id="content-4.5"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="4.5"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="4.5" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Unit 5
+           ======================== -->
+      <section class="content-section" id="section-unit5" data-section="unit5" hidden>
+        <div class="section-header">
+          <h1>Unit 5: Operations Management</h1>
+          <p class="section-subtitle">Managing the production of goods and services (SL topics)</p>
+          <div class="unit-progress-inline">
+            <div class="progress-bar"><div class="progress-bar-fill" id="unit5InlineBar" style="width:0%"></div></div>
+            <span id="unit5InlinePct">0% complete</span>
+          </div>
+        </div>
+
+        <div class="topic-tabs" id="unit5Tabs" role="tablist">
+          <button class="topic-tab active" role="tab" data-tab="5.1" aria-selected="true">5.1 Introduction to Operations Management</button>
+          <button class="topic-tab" role="tab" data-tab="5.2">5.2 Operations Methods</button>
+          <button class="topic-tab" role="tab" data-tab="5.4">5.4 Location</button>
+          <button class="topic-tab" role="tab" data-tab="5.5">5.5 Production Planning</button>
+        </div>
+
+        <div class="topic-panels" id="unit5Panels">
+          <div class="topic-panel active" id="panel-5.1" data-panel="5.1" role="tabpanel">
+            <div class="topic-content" id="content-5.1"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="5.1"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="5.1" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-5.2" data-panel="5.2" role="tabpanel" hidden>
+            <div class="topic-content" id="content-5.2"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="5.2"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="5.2" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-5.4" data-panel="5.4" role="tabpanel" hidden>
+            <div class="topic-content" id="content-5.4"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="5.4"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="5.4" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+          <div class="topic-panel" id="panel-5.5" data-panel="5.5" role="tabpanel" hidden>
+            <div class="topic-content" id="content-5.5"></div>
+            <div class="topic-actions">
+              <button class="btn btn-outline mark-complete-btn" data-topic="5.5"><i class="fas fa-check-circle"></i> Mark as Complete</button>
+              <button class="btn btn-ghost" data-topic="5.5" data-action="notes"><i class="fas fa-sticky-note"></i> Add Note</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Flashcards
+           ======================== -->
+      <section class="content-section" id="section-flashcards" data-section="flashcards" hidden>
+        <div class="section-header">
+          <h1>Flashcards</h1>
+          <p class="section-subtitle">Review key terms and concepts with spaced repetition</p>
+        </div>
+
+        <div class="flashcard-controls" id="flashcardControls">
+          <div class="flashcard-filter">
+            <label for="flashcardUnit">Filter by unit:</label>
+            <select id="flashcardUnit" class="form-select">
+              <option value="all">All Units</option>
+              <option value="1">Unit 1: Introduction to BM</option>
+              <option value="2">Unit 2: HRM</option>
+              <option value="3">Unit 3: Finance and Accounts</option>
+              <option value="4">Unit 4: Marketing</option>
+              <option value="5">Unit 5: Operations Management</option>
+            </select>
+          </div>
+          <div class="flashcard-filter">
+            <label for="flashcardStartFrom">Start from card #:</label>
+            <input type="number" id="flashcardStartFrom" class="form-input" min="1" value="1">
+            <button class="btn btn-sm btn-primary" id="flashcardJumpBtn">Go</button>
+          </div>
+          <div class="flashcard-stats">
+            <span id="flashcardProgress">Card 0 of 0</span>
+            <span id="flashcardScore">Mastered: 0</span>
+          </div>
+        </div>
+
+        <div class="flashcard-container" id="flashcardContainer">
+          <div class="flashcard" id="flashcard">
+              <div class="flashcard-face flashcard-front" id="flashcardFront">
+                <p>Select a unit to begin reviewing flashcards</p>
+              </div>
+              <div class="flashcard-face flashcard-back" id="flashcardBack">
+                <p></p>
+              </div>
+          </div>
+        </div>
+
+        <div class="flashcard-actions" id="flashcardActions">
+          <button class="btn btn-outline" id="flashcardPrev" disabled><i class="fas fa-arrow-left"></i> Previous</button>
+          <button class="btn btn-primary" id="flashcardFlip"><i class="fas fa-sync-alt"></i> Flip</button>
+          <button class="btn btn-outline" id="flashcardNext">Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+
+        <div class="flashcard-rating" id="flashcardRating" hidden>
+          <p>How well did you know this?</p>
+          <div class="rating-buttons">
+            <button class="btn btn-sm rating-btn" data-rating="1">Did not know</button>
+            <button class="btn btn-sm rating-btn" data-rating="2">Somewhat</button>
+            <button class="btn btn-sm rating-btn" data-rating="3">Knew it</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Exam Practice
+           ======================== -->
+      <section class="content-section" id="section-exam-practice" data-section="exam-practice" hidden>
+        <div class="section-header">
+          <h1>Exam Practice</h1>
+          <p class="section-subtitle">Practice with IB-style questions and mark schemes</p>
+        </div>
+
+        <div class="exam-practice-controls">
+          <div class="exam-filter-row">
+            <div class="form-group">
+              <label for="examPaper">Paper:</label>
+              <select id="examPaper" class="form-select">
+                <option value="all">All Papers</option>
+                <option value="Paper 1">Paper 1</option>
+                <option value="Paper 2">Paper 2</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="examYear">Session:</label>
+              <select id="examYear" class="form-select">
+                <option value="all">All Sessions</option>
+                <option value="M25">May 2025</option>
+                <option value="N25">Nov 2025</option>
+                <option value="N24">Nov 2024</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="examUnit">Unit:</label>
+              <select id="examUnit" class="form-select">
+                <option value="all">All Units</option>
+                <option value="1">Unit 1</option>
+                <option value="2">Unit 2</option>
+                <option value="3">Unit 3</option>
+                <option value="4">Unit 4</option>
+                <option value="5">Unit 5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="examType">Marks:</label>
+              <select id="examType" class="form-select">
+                <option value="all">All Types</option>
+                <option value="short">Short Answer (2–6 marks)</option>
+                <option value="essay">Extended Response (10 marks)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="exam-question-list" id="examQuestionList">
+          <!-- JS populated list of all questions -->
+        </div>
+
+        <div class="exam-question-area" id="examQuestionArea" hidden>
+        </div>
+
+        <div class="exam-answer-area" id="examAnswerArea" hidden>
+          <label for="examAnswer">Your answer:</label>
+          <textarea id="examAnswer" class="form-textarea" rows="10" placeholder="Type your answer here..."></textarea>
+          <div class="exam-answer-actions">
+            <button class="btn btn-primary" id="showMarkScheme"><i class="fas fa-eye"></i> Show Mark Scheme</button>
+            <button class="btn btn-outline" id="clearAnswer"><i class="fas fa-eraser"></i> Clear</button>
+          </div>
+        </div>
+
+        <div class="exam-markscheme" id="examMarkScheme" hidden>
+          <!-- JS populated -->
+        </div>
+
+        <div class="exam-history" id="examHistory">
+          <h3>Practice History</h3>
+          <div class="exam-history-list" id="examHistoryList">
+            <p class="empty-state">No practice questions attempted yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Study Planner
+           ======================== -->
+
+    </main>
+  </div>
+
+  <!-- ============================
+       FOOTER
+       ============================ -->
+  <footer class="app-footer" id="appFooter">
+    <div class="footer-content">
+      <p class="footer-disclaimer">
+        This is an independent study resource and is not affiliated with, endorsed by, or associated with the International Baccalaureate Organization (IBO).
+        All IB-related terminology is used for educational reference only. Content is provided as-is for revision purposes.
+        Always refer to the official IB Business Management guide for the most accurate and up-to-date syllabus information.
+      </p>
+      <div class="footer-meta">
+        <span>IBDP Business Management SL Study Hub</span>
+        <span class="footer-sep">|</span>
+        <span>Built for IB Students</span>
+        <span class="footer-sep">|</span>
+        <span id="footerYear">2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast / Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" hidden aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
